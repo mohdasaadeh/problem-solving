@@ -1,4 +1,4 @@
-function maxSubArraySum(arr, num) {
+function maxSortedSubArraySum(arr, num) {
   if (arr.length < num) return null;
 
   let max = 0;
@@ -18,5 +18,5 @@ function maxSubArraySum(arr, num) {
   return max;
 }
 
-console.log(maxSubArraySum([1, 2, 3, 4, 5, 6], 3));
-console.log(maxSubArraySum([1, 1, 2, 2, 3, 3], 2));
+console.log(maxSortedSubArraySum([1, 2, 3, 4, 5, 6], 3));
+console.log(maxSortedSubArraySum([1, 1, 2, 2, 3, 3], 2));

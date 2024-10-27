@@ -1,16 +1,19 @@
 function myMaxSubArraySum(arr, num) {
-  let max = null;
-
   if (arr.length < num) return null;
 
-  for (let i = 0; i < arr.length; i++) {
-    let tempMax = 0;
+  let max = 0;
+  let tempMax = 0;
 
-    for (let j = i; j < num + i; j++) {
-      tempMax = tempMax + arr[j];
-    }
+  for (let i = 0; i < num; i++) {
+    max += arr[i];
+  }
 
-    if (max === null || tempMax > max) {
+  tempMax = max;
+
+  for (let i = 1; i < arr.length; i++) {
+    tempMax = tempMax - arr[i - 1] + arr[i + num - 1];
+
+    if (tempMax > max) {
       max = tempMax;
     }
   }
@@ -18,5 +21,8 @@ function myMaxSubArraySum(arr, num) {
   return max;
 }
 
-console.log(myMaxSubArraySum([1, 2, 3, 4, 5, 6], 3));
-console.log(myMaxSubArraySum([1, 1, 2, 2, 3, 3], 2));
+console.log(myMaxSubArraySum([100, 200, 300, 400], 2)); // 700
+console.log(myMaxSubArraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4)); // 39
+console.log(myMaxSubArraySum([-3, 4, 0, -2, 6, -1], 2)); // 5
+console.log(myMaxSubArraySum([3, -2, 7, -4, 1, -1, 4, -2, 1], 2)); // 5
+console.log(myMaxSubArraySum([2, 3], 3)); // null
